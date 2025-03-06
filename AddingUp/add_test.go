@@ -1,6 +1,9 @@
 package addingup
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestAdd(t *testing.T) {
 	assertCorrectMessage := func(t testing.TB, got, want int) {
@@ -15,4 +18,9 @@ func TestAdd(t *testing.T) {
 		want := 3
 		assertCorrectMessage(t, got, want)
 	})
+}
+
+func ExampleAdd() {
+	sum := Add(1, 5)
+	fmt.Println(sum)
 }
