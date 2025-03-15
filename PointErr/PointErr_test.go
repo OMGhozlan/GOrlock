@@ -60,8 +60,9 @@ func TestWallet(t *testing.T) {
 				test.wallet.Deposit(Bitcoin(10))
 				checkWalletBalanceString(t, test.wallet, test.want)
 			case 2:
-				test.wallet.Withdraw(Bitcoin(10))
+				err := test.wallet.Withdraw(Bitcoin(10))
 				checkWalletBalanceString(t, test.wallet, test.want)
+				checkForError(t, err, ErrInsufficientFunds)
 			case 3:
 				err := test.wallet.Withdraw(Bitcoin(500))
 				checkForError(t, err, ErrInsufficientFunds)
